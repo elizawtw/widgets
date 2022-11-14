@@ -5,14 +5,21 @@ const Dropdown = ({options, selected, onSelectedChange}) => {
   const ref = useRef();
 
 useEffect(() => {
-  document.body.addEventListener('click', (e) => { //this get called before react listeners
+  const onBodyClick = (e) => {
     if(ref.current.contains(e.target)){ //contains check whether one element is contained inside another element
       return;
     }
     setOpen(false);
-  }, {
+  
+  }
+  document.body.addEventListener('click', onBodyClick, {
     capture: true
-  })
+  });
+
+  return() => {
+    document.body.removeEventListener('click', onBodyClick, {
+      capture: true,    })
+  }
 },[]) //only run one time with empty array
 
   const renderOptions = options.map((option) => {
@@ -26,8 +33,6 @@ useEffect(() => {
       </div>
     )
   })
-
-  console.log(ref.current)
 
   return (
     <div className="ui form" ref={ref}>
