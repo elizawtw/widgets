@@ -3,6 +3,7 @@ import {useState} from 'react';
 import Accordion from "./components/Accordion";
 import Search from "./components/Search";
 import Dropdown from "./components/Dropdown";
+import Translate from "./components/Translate";
 
 const items = [
   {
@@ -41,13 +42,14 @@ const App = () => {
     <div>
       {/* <Search /> */}
       {/* { <Accordion items={items}/> /*name of prop is items and the value is the items array */}
-      <button onClick={() => setShowDropdown(!showDropdown)}>Toggle Dropdown</button>
+      {/* <button onClick={() => setShowDropdown(!showDropdown)}>Toggle Dropdown</button>
       {showDropdown ? 
       <Dropdown 
       selected={selected}
       onSelectedChange={setSelected} 
       options={options} />
-      : null}
+      : null} */}
+      <Translate />
     </div>
   );
 };
